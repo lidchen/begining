@@ -10,7 +10,7 @@ AddAction::~AddAction() { std::cout << "AddAction Deleted" << std::endl; }
 void AddAction::execute()
 {
     std::vector<Todo>::iterator it = std::lower_bound(todolists.Todolist.begin(), todolists.Todolist.end(), todo, 
-        [](const Todo& a, const Todo& b){
+        [](const Todo& a, const Todo& b){ 
             return a.GetRank() > b.GetRank(); });
     insertPos = std::distance(todolists.Todolist.begin(),it);
 

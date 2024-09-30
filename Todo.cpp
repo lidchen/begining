@@ -13,7 +13,7 @@ void Todo::UnDone(int r) { rank = r; done = false;}
 void Todo::Modify(const std::string& newName)  { name = newName;   }
 void Todo::Modify(const int& newRank)  { rank = newRank; }
 
-void Todo::Serialize(std::ofstream& ofs) {
+void Todo::Serialize(std::ofstream& ofs) const {
     ofs << name << "\n" << rank << "\n" << done << "\n"; }
 
 void Todo::DeSerialize(std::ifstream& ifs) {

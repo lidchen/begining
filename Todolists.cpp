@@ -1,5 +1,9 @@
 #include "Todolists.h"
 #include "Action.h"
+#include <fstream>
+#include <sstream>
+#include <string>
+
 
 int Todolists::GetSize() { return Todolist.size(); }
 
@@ -73,14 +77,14 @@ void Todolists::CleanerList() const
 
 void Todolists::SaveToFile()
 {
-    std::ofstream file (filename, std::ios::out | std::ios::trunc);
-    if (file.is_open()){
-        file.seekp(0, std::ios::beg);
-        Todo todo;
-
-        for (const Todo& val : Todolist) { todo.Serialize(file); }
+    std::ofstream file(filename, std::ios::out | std::ios::trunc);
+    if (file.is_open()) {
+        for (const Todo& todo : Todolist) {
+            todo.Serialize(file);
+        }
         file.close();
-    }else{
+        std::cout << "Saved to " << filename << std::endl;
+    } else {
         std::cout << "Can't open file" << std::endl;
     }
 }
